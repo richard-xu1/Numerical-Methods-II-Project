@@ -25,7 +25,28 @@ Tmatc = -r/(4*rho*dx*dx)	  # factor in front of v_{j+1} in our tridiagonal opera
 #of voltage and gating variables at time t_k.
 
 #grid is a bit string that describes whether a point is myelinated or unmyelinated
-grid = BuildGrid(caseNumber, numOfNor, mylSections, n, norPoints, mylPoints) 
+grid = [False]*n
+# print grid
+if (caseNumber == 0):
+    for i in range (0,n):
+        grid[i] = False
+else: 
+    for j in range(0,numOfNor+1):
+        print "j is" + str(j)
+        norStartIndex = j*(norPoints+mylPoints)
+        mylStartIndex = norStartIndex +norPoints
+        print "NOR Start Index is"+str(norStartIndex)
+        print "mylStartIndex is"+str(mylStartIndex)
+        print "norPoints is" +str(norPoints)
+        for i in range(norStartIndex,norStartIndex+norPoints):
+            print "i is" + str(i)
+            grid[i] = False
+        for m in range(mylStartIndex,mylStartIndex+mylPoints):
+            print "m is" + str(m)
+            grid[m] = True
+    for i in range(n-norPoints,n-1):
+        grid[i] = False
+# print grid 
 
 #BuildCoefficients should return the values of a[n],b[n],c[n], which are the coefficients
 #of voltage at time t_k+1 and are hence the entries in the tridiagonal system
