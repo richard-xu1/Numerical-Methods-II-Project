@@ -10,6 +10,7 @@ dt = par.dt
 dx = par.dx
 
 def TimeStep(s,type,v): #n is type = 1, m is type = 2, h is type = 3
+    #takes s_k and v_{k+1/2} and returns s_{k+1}  
     #define alpha and beta functions for the gate type
     def alpha(v):
         if type == 1:  
