@@ -8,10 +8,10 @@ numOfNor = 0                            #Number of Nodes of Ranvier excluding st
 mylSections = numOfNor + 1               #number of myelinated sections
 nodeLen = .001                             # node of ranvier length in millimeter
 
-n = mylSections*mylPoints + (numofNor + 2)*norPoints                       #Total points in Linear Cable 
 norPoints = 10									#Node of Ranvier Grid Points
 MylNorRatio = 148                               # Mylin length to Node length ratio
 mylPoints = MylNorRatio*norPoints							#Myelin section Grid Points
+n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numofNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
 dx = cableLength/n                #dx size in millimeter found by dividing total cable length by total number og grid points
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
