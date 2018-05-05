@@ -5,7 +5,7 @@ caseNumber = #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
 numOfNor= #Number of Nodes of Ranvier excluding starting and end Nodes
-mylSections = 2*numOfNor
+mylSections = numOfNor + 1               #number of myelinated sections
 
 n =	#Total points in Linear Cable 
 norPoints =							#Node of Ranvier Grid Points
