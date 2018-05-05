@@ -30,14 +30,14 @@ if (caseNumber == 0):
         grid[i] = False
 else: 
     for j in range(0,numOfNor+1):
-        print "j is" + str(j)
+#         print "j is" + str(j)
         norStartIndex = j*(norPoints+mylPoints)
         mylStartIndex = norStartIndex +norPoints
-        print "NOR Start Index is"+str(norStartIndex)
-        print "mylStartIndex is"+str(mylStartIndex)
-        print "norPoints is" +str(norPoints)
+#         print "NOR Start Index is"+str(norStartIndex)
+#         print "mylStartIndex is"+str(mylStartIndex)
+#         print "norPoints is" +str(norPoints)
         for i in range(norStartIndex,norStartIndex+norPoints):
-            print "i is" + str(i)
+#             print "i is" + str(i)
             grid[i] = False
         for m in range(mylStartIndex,mylStartIndex+mylPoints):
             print "m is" + str(m)
