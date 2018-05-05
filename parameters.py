@@ -6,14 +6,14 @@ caseNumber = #{Case #1: Unmyelenated , Case #2: Myelenated}
 #For Case #2
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
 mylSections = numOfNor + 1               #number of myelinated sections
-nodeLen = 1                             # node of ranvier length in micrometers
+nodeLen = .001                             # node of ranvier length in millimeter
 
 n = mylSections*mylPoints + (numofNor + 2)*norPoints                       #Total points in Linear Cable 
 norPoints = 10									#Node of Ranvier Grid Points
 MylNorRatio = 148                               # Mylin length to Node length ratio
 mylPoints = MylNorRatio*norPoints							#Myelin section Grid Points
-cableLength = nodeLen*(numofNor + 2) + MylNorRatio*mylSections  #total Length of cable in micrometers
-dx = cableLength/n                #dx size in micrometers found by dividing total cable length by total number og grid points
+cableLength = nodeLen*(numofNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
+dx = cableLength/n                #dx size in millimeter found by dividing total cable length by total number og grid points
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
