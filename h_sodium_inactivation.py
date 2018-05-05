@@ -3,16 +3,19 @@ import scipy as sp
 # the equations for the sodium inactivation gating variable "h"
 
 # coefficients used in alpha/beta functions
-A = 0.1     #1/msec
-B = -10.    #mV
-C = 6.      #mvV
+Aa = 0.1     #1/msec
+Ba = -10.    #mV
+Ca = 6.      #mvV
+Ab = 4.5     #1/msec
+Bb = 45      #mV
+Cb = 10      #mV   
 
 def alpha(v):
-    ah = A*(B-V)/(1 - np.exp((v-B)/C)
+    ah = Aa*(Ba-V)/(1 - np.exp((v-Ba)/Ca)
     return ah
     
 def beta(v):
-    bh = A/( 1 + np.exp((B-v)/C))
+    bh = Ab/( 1 + np.exp((Bb-v)/Cb))
     return bh
     
     
