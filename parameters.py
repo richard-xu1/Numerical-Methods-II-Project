@@ -7,9 +7,9 @@ caseNumber = #{Case #1: Unmyelenated , Case #2: Myelenated}
 numOfNor= #Number of Nodes of Ranvier excluding starting and end Nodes
 mylSections = numOfNor + 1               #number of myelinated sections
 
-n =	#Total points in Linear Cable 
-norPoints =							#Node of Ranvier Grid Points
-mylPoints = 146*norPoints			#Myelin section Grid Points
+n = mylSections*mylPoints + (numofNor + 2)*norPoints                       #Total points in Linear Cable 
+norPoints = 10									#Node of Ranvier Grid Points
+mylPoints = 146*norPoints							#Myelin section Grid Points
 dx = ?
 length of cable = ?
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
