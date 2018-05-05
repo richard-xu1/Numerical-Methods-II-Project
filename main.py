@@ -23,7 +23,7 @@ a=np.ndarray(n)
 b=np.ndarray(n)
 C=np.ndarray(n)
 
-a,b,c = makeCoefficients()
+a,b,c = makeCoefficients(a,b,c)
 
 for k in range (t_steps)
   #Update gating variables  
