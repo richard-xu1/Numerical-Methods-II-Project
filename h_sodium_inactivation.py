@@ -7,11 +7,11 @@ Aa = 0.1     #1/msec
 Ba = -10.    #mV
 Ca = 6.      #mvV
 Ab = 4.5     #1/msec
-Bb = 45      #mV
-Cb = 10      #mV   
+Bb = 45.      #mV
+Cb = 10.      #mV   
 
 def alpha(v):
-    ah = Aa*(Ba-V)/(1 - np.exp((v-Ba)/Ca)
+    ah = Aa*(Ba-v)/(1 - np.exp((v-Ba)/Ca))
     return ah
     
 def beta(v):
