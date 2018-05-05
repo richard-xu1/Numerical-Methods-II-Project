@@ -12,8 +12,8 @@ n = mylSections*mylPoints + (numofNor + 2)*norPoints                       #Tota
 norPoints = 10									#Node of Ranvier Grid Points
 MylNorRatio = 148                               # Mylin length to Node length ratio
 mylPoints = MylNorRatio*norPoints							#Myelin section Grid Points
-dx = cableLength/n                #dx size in micrometers found by dividing total cable length by total number og grid points
 cableLength = nodeLen*(numofNor + 2) + MylNorRatio*mylSections  #total Length of cable in micrometers
+dx = cableLength/n                #dx size in micrometers found by dividing total cable length by total number og grid points
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
