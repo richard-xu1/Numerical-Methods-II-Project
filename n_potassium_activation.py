@@ -1,6 +1,6 @@
 import numpy as np
 import scipy as sp
-# the equations for the sodium inactivation gating variable "h"
+# the equations for the potassium activation gating variable "h"
 
 # coefficients used in alpha/beta functions
 Aa = .02     #1/msec
