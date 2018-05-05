@@ -9,11 +9,18 @@ mylSections = numOfNor + 1               #number of myelinated sections
 nodeLen = .001                             # node of ranvier length in millimeter
 
 norPoints = 10									#Node of Ranvier Grid Points
-MylNorRatio = 148                               # Mylin length to Node length ratio
+MylNorRatio = 148                               # Myelin length to Node length ratio
 mylPoints = MylNorRatio*norPoints							#Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
 dx = cableLength/n                #dx size in millimeter found by dividing total cable length by total number og grid points
+r = 0.0005			  #cable radius in millimeters
+rho = 35.4			  # axoplasmic resistivity Ohm*cm
+CN = 1.5			  # nodal membrane capacitance in micromicrofarads
+Tmata = -r/(4*rho*dx*dx)          # factor in front of v_{j-1} in our tridiagonal operator
+Tmatb = CN/dt - r/(2*rho*dx*dx)   # factor in front of v_j in our tridiagonal operator
+Tmatc = -r/(4*rho*dx*dx)	  # factor in front of v_{j+1} in our tridiagonal operator
+
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
