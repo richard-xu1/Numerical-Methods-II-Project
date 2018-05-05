@@ -18,9 +18,6 @@ r = 0.0005			  #cable radius in millimeters
 rho = 354			  # axoplasmic resistivity Ohm*mm
 CN = 1.5			  # nodal membrane capacitance in micromicrofarads
 CM = 1.6			  # myelinated membrane capacitance in micromicrofarads
-Tmata = -r/(4*rho*dx*dx)          # factor in front of v_{j-1} in our tridiagonal operator
-Tmatb = CN/dt + r/(2*rho*dx*dx)   # factor in front of v_j in our tridiagonal operator
-Tmatc = -r/(4*rho*dx*dx)	  # factor in front of v_{j+1} in our tridiagonal operator
 
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
