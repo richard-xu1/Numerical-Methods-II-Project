@@ -17,21 +17,17 @@ dx = cableLength/n                #dx size in micrometers found by dividing tota
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
-BuildGrid(caseNumber, numOfNor, mylSections, n, norPoints, mylPoints) 
+#grid is a bit string that describes whether a point is myelinated or unmyelinated
+grid = BuildGrid(caseNumber, numOfNor, mylSections, n, norPoints, mylPoints) 
 
 #BuildCoefficients should return the values of a[n],b[n],c[n], which are the coefficients
 #of voltage at time t_k+1 and are hence the entries in the tridiagonal system
 
 BuildCoefficients(caseNumber, numOfNor, mylSections, n, norPoints, mylPoints)
 
-#buildD should return the right hand side vector of the tridiagonal system
-d = buildD()
-
-time	= 
-dt		= 
-dx 		= 
 
 
-tridiagonalSolve(a,b,c,d)
+
+
 	
 
