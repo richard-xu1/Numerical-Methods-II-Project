@@ -49,11 +49,6 @@ else:
 #BuildCoefficients should return the values of a[n],b[n],c[n], which are the coefficients
 #of voltage at time t_k+1 and are hence the entries in the tridiagonal system
 
-BuildCoefficients(caseNumber, numOfNor, mylSections, n, norPoints, mylPoints)
-
-
-
-
 
 	
 
