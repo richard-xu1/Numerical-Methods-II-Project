@@ -22,9 +22,9 @@ def makeCoefficients(a,b,c):
 	    b[i]= cn/dt + r/(2*rho*dx*dx) 
 	    c[i]= -r/(4*rho*dx*dx)
 	  else:
-	    a[i]= -1./(2*dx*dx(r1+r2))
+	    a[i]= -1./(2*dx*dx*(r1+r2))
 	    b[i]= cm/dt + 1./(dx*dx*(r1+r2))
-	    c[i]= -1./(2*dx*dx(r1+r2))
+	    c[i]= -1./(2*dx*dx*(r1+r2))
 	    
 	#Boundary Points
 	b[0] = 0
