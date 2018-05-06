@@ -1,15 +1,15 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
 
-caseNumber = 0 #{Case #1: Unmyelenated , Case #2: Myelenated}
+caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
 mylSections = numOfNor + 1               #number of myelinated sections
 nodeLen = .001                             # node of ranvier length in millimeter
 
-norPoints = 10									#Node of Ranvier Grid Points
-MylNorRatio = 148                               # Myelin length to Node length ratio
+norPoints = 1									#Node of Ranvier Grid Points
+MylNorRatio = 5                               # Myelin length to Node length ratio
 mylPoints = MylNorRatio*norPoints							#Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
@@ -33,18 +33,18 @@ if (caseNumber == 0):
         grid[i] = False
 else: 
     for j in range(0,numOfNor+1):
-#         print "j is" + str(j)
+        # print "j is" + str(j)
         norStartIndex = j*(norPoints+mylPoints)
         mylStartIndex = norStartIndex +norPoints
-#         print "NOR Start Index is"+str(norStartIndex)
-#         print "mylStartIndex is"+str(mylStartIndex)
-#         print "norPoints is" +str(norPoints)
+        # print "NOR Start Index is"+str(norStartIndex)
+        # print "mylStartIndex is"+str(mylStartIndex)
+        # print "norPoints is" +str(norPoints)
         for i in range(norStartIndex,norStartIndex+norPoints):
-#             print "i is" + str(i)
+            # print "i is" + str(i)
             grid[i] = False
         for m in range(mylStartIndex,mylStartIndex+mylPoints):
-            print "m is" + str(m)
+            # print "m is" + str(m)
             grid[m] = True
     for i in range(n-norPoints,n-1):
         grid[i] = False
-# print grid 
+print grid
