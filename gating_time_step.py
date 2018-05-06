@@ -30,13 +30,13 @@ def Initialize(v,type):
     
 
 
-def TimeStep(s,type,v): #n is type = 1, m is type = 2, h is type = 3
+def TimeStep(s,gtype,v): #n is type = 1, m is type = 2, h is type = 3
     #takes s_k and v_{k+1/2} and returns s_{k+1}  
     #define alpha and beta functions for the gate type
-        if type == 1:  
+        if gtype == 1:  
             A = n.alpha(v)
             B = n.beta(v)
-        elif type == 2:
+        elif gtype == 2:
             A = m.alpha(v)
             B = m.beta(v)
         else:
