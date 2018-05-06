@@ -1,1 +1,23 @@
-#Implements the O(n) Thomas Algorithm from 
+#Implements a Gaussian elimination solver
+import numpy as np
+import scipy as sp
+import parameters as par
+
+n = par.n             #import number of spatial discretizations
+
+
+def tridiagonalSolve(a,b,c,d):
+    T = np.ndarray([n,n]) #create nxn tridiagonal matrix
+    for i in range(n):      #fill in the T matrix using 'a','b','c'
+        T[i,i] = b[i]
+        if i != 0:
+            T[i,i-1] = a[i]
+        if i != n-1:
+            T[i,i+1] = c[i]
+    return sp.linalg.solve(a,d)
+
+
+
+
+
+
