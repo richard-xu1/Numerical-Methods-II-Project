@@ -19,6 +19,11 @@ H_kHalf = np.ndarray(n)   #array stores gating variable m at time k+1/2
 v_k = np.ndarray(n)
 v_kHalf = np.ndarray(n)
 
+#Initial conditions
+for i in range(0,n)
+    v_k = 0
+    v_kHalf = 0
+
 a=np.ndarray(n)
 b=np.ndarray(n)
 C=np.ndarray(n)
