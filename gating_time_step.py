@@ -44,4 +44,4 @@ def TimeStep(s,gtype,v): #n is type = 1, m is type = 2, h is type = 3
     C2 = invdt - A/2 - B/2
     return np.divide((np.multiply(s,C2) + A),C1)
         
-  
+   
