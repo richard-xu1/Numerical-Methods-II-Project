@@ -19,13 +19,13 @@ def Initialize(v,type){
                 return m.alpha(v)
             else:
                 return h.alpha(v)
-        def beta(v):
-            if type == 1:  
-                return n.beta(v)
-            elif type == 2:
-                return m.beta(v)
-            else:
-                return h.beta(v)
+    def beta(v):
+        if type == 1:  
+            return n.beta(v)
+        elif type == 2:
+            return m.beta(v)
+        else:
+            return h.beta(v)
     v = (divide(alpha(v),(alpha(v)+beta(v))
     
 }
