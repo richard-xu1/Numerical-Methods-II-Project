@@ -26,7 +26,7 @@ def Initialize(v,type):
             return m.beta(v)
         else:
             return h.beta(v)
-    v = (np.divide(alpha(v),(alpha(v)+beta(v))
+    v = (np.divide(alpha(v),(alpha(v)+beta(v))))
     
 
 
