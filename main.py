@@ -43,14 +43,12 @@ Initialize(H_kHalf,3)
 #Initialize coefficient diagonals
 a=np.ndarray(n)
 b=np.ndarray(n)
-C=np.ndarray(n)
+c=np.ndarray(n)
 
 #Compute coefficient diagonals
-a,b,c = makeCoefficients(a,b,c)
-
+makeCoefficients(a,b,c)
+t_steps = int (par.T / par.dt)
 #TimeStep
-t_steps = par.T/part.dt
-
 for k in range (t_steps):
   #Update gating variables  
   N_k = TimeStep(N_k,1,v_kHalf)
