@@ -1,7 +1,7 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
 
-caseNumber = #{Case #1: Unmyelenated , Case #2: Myelenated}
+caseNumber = 0 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
@@ -18,8 +18,10 @@ r = 0.0005			  #cable radius in millimeters
 rho = 354			  # axoplasmic resistivity Ohm*mm
 CN = 1.5			  # nodal membrane capacitance in micromicrofarads
 CM = 1.6			  # myelinated membrane capacitance in micromicrofarads
-T = 1				  # total computation time
-dt = dx*dx			  # spatial step
+T=1     
+r1= 1
+r2= 14               
+dt=dx*dx
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
@@ -46,10 +48,3 @@ else:
     for i in range(n-norPoints,n-1):
         grid[i] = False
 # print grid 
-
-#BuildCoefficients should return the values of a[n],b[n],c[n], which are the coefficients
-#of voltage at time t_k+1 and are hence the entries in the tridiagonal system
-
-
-	
-
