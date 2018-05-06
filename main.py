@@ -21,8 +21,8 @@ v_kHalf = np.ndarray(n)
 
 #Initial conditions
 for i in range(0,n)
-    v_k = 0
-    v_kHalf = 0
+    v_k[i] = 0
+    v_kHalf[i] = 0
 
 a=np.ndarray(n)
 b=np.ndarray(n)
