@@ -2,6 +2,7 @@ import numpy as np
 import scipy as sp
 import parameters as par
 from gating_time_step import TimeStep,Initialize
+from Coefficients import makeCoefficients
 
 n = par.n
 #Initialize Arrays
@@ -21,9 +22,17 @@ v_k = np.ndarray(n)
 v_kHalf = np.ndarray(n)
 
 #Initial conditions
+#Initialize all vectors to zero
 for i in range(0,n)
-    v_k[i] = 0
-    v_kHalf[i] = 0
+    v_k[i] = 0.
+    v_kHalf[i] = 0.
+    N_k[i] = 0.
+    N_kHalf[i] = 0.
+    M_k[i] = 0.
+    M_kHalf[i] = 0.
+    H_k[i] = 0.
+    H_kHalf[i] = 0.
+#Initialize Gating variable vectors
 Initialize(N_k,1)
 Initialize(N_kHalf,1)
 Initialize(M_k,2)
@@ -31,12 +40,15 @@ Initialize(M_kHalf,2)
 Initialize(H_k,3)
 Initialize(H_kHalf,3)
 
+#Initialize coefficient diagonals
 a=np.ndarray(n)
 b=np.ndarray(n)
 C=np.ndarray(n)
 
+#Compute coefficient diagonals
 a,b,c = makeCoefficients(a,b,c)
 
+#TimeStep
 for k in range (t_steps)
   #Update gating variables  
   N_k = TimeStep(N_k,1,v_kHalf)
