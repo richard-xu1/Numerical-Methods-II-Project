@@ -49,7 +49,9 @@ C=np.ndarray(n)
 a,b,c = makeCoefficients(a,b,c)
 
 #TimeStep
-for k in range (t_steps)
+t_steps = par.T/part.dt
+
+for k in range (t_steps):
   #Update gating variables  
   N_k = TimeStep(N_k,1,v_kHalf)
   M_k = TimeStep(M_k,2,v_kHalf)
