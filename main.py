@@ -23,7 +23,7 @@ v_kHalf = np.ndarray(n)
 
 #Initial conditions
 #Initialize all vectors to zero
-for i in range(0,n)
+for i in range(0,n):
     v_k[i] = 0.
     v_kHalf[i] = 0.
     N_k[i] = 0.
