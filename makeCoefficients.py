@@ -2,7 +2,7 @@ import numpy as np
 import scipy as sp
 import parameters par
 
-
+def makeCoefficients(a,b,c):
 r = par.r
 rho = par.rho
 cn = par.CN
