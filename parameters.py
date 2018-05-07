@@ -24,7 +24,6 @@ r2= 14
 dt=dx*dx
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
-
 #grid is a bit string that describes whether a point is myelinated or unmyelinated
 grid = [0]*n
 # print grid
@@ -46,7 +45,7 @@ else:
             # print "m is" + str(m)
             grid[m] = 1
         grid[mylStartIndex] = 2
-        grid[mylStartIndex+mylPoints-1] = 2
+        grid[mylStartIndex+mylPoints-1] = 3
     for i in range(n-norPoints,n-1):
         grid[i] =0
 print grid
