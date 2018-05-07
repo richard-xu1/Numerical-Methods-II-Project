@@ -1,3 +1,5 @@
+# b is a function of gating variables so it needs to be updated with each time step
+
 import numpy as np
 import scipy as sp
 import parameters as par
