@@ -26,11 +26,11 @@ dt=dx*dx
 #of voltage and gating variables at time t_k.
 
 #grid is a bit string that describes whether a point is myelinated or unmyelinated
-grid = [False]*n
+grid = [0]*n
 # print grid
 if (caseNumber == 0):
     for i in range (0,n):
-        grid[i] = False
+        grid[i] = 0
 else: 
     for j in range(0,numOfNor+1):
         # print "j is" + str(j)
@@ -41,10 +41,12 @@ else:
         # print "norPoints is" +str(norPoints)
         for i in range(norStartIndex,norStartIndex+norPoints):
             # print "i is" + str(i)
-            grid[i] = False
-        for m in range(mylStartIndex,mylStartIndex+mylPoints):
+            grid[i] = 0
+        for m in range(mylStartIndex+1,mylStartIndex+mylPoints-1):
             # print "m is" + str(m)
-            grid[m] = True
+            grid[m] = 1
+        grid[mylStartIndex] = 2
+        grid[mylStartIndex+mylPoints-1] = 2
     for i in range(n-norPoints,n-1):
-        grid[i] = False
+        grid[i] =0
 print grid
