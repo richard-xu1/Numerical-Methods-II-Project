@@ -14,4 +14,5 @@
 #j=0: Atilde_0, gtilde_0^k+(1/2),Etilde_0^k+(1/2) v_0^k, v_1^k, i_0(t) (injected current) 
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
-#make d would need the updated gating variables, and other parameters to compute the RHS coefficient
+#maked would need the updated gating variables, and other parameters to compute the RHS coefficient
+maked(m,n,h)
