@@ -1,4 +1,3 @@
-# this code should only construct a and c vectors since they are constants
 # b is a function of gating variables so it needs to be updated with each time step
 # makeCoefficients makes computes coefficients vectors a and c for different types of nodes
 # par.grid provides information about the node whether its of type 0,1,2,3
@@ -35,6 +34,10 @@ def makeCoefficients(a,c):
 
 	c[0] = 0
 	a[n-1] = 0 
+	
+	
+# makeb updates the coefficients of the main diagonal since it's a function of the gating variables
+def makeb(b,n,m,h)
 
   
 
