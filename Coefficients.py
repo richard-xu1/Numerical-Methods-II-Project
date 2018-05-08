@@ -1,5 +1,9 @@
 # this code should only construct a and c vectors since they are constants
 # b is a function of gating variables so it needs to be updated with each time step
+# makeCoefficients makes computes coefficients vectors a and c for different types of nodes
+# par.grid provides information about the node whether its of type 0,1,2,3
+# 0: internal HH point, 1: Internal myelin point, 2: junction with myelin on the right, 3: junction with myelin on the left
+
 
 import numpy as np
 import scipy as sp
