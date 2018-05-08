@@ -23,12 +23,12 @@ for i in range(0,n):
     M_kh[i] = 0.
     H_kh[i] = 0.
     
-\#Initialize Gating variable vectors. Gating variables need to be initialized to rest potentials. page 11, eq 29,30
+#Initialize Gating variable vectors. Gating variables need to be initialized to rest potentials. page 11, eq 29,30
 Initialize(N_kh,1)
 Initialize(M_kh,2)
 Initialize(H_kh,3)
 
-#Initialize coefficient diagonals
+#Initialize coefficient diagonals arrays
 a=np.ndarray(n)
 b=np.ndarray(n)
 c=np.ndarray(n)
