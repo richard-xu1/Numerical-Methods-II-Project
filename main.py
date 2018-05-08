@@ -2,8 +2,9 @@ import numpy as np
 import scipy as sp
 import parameters as par
 from gating_time_step import TimeStep,Initialize
-from Coefficients import makeCoefficients
+from Coefficients import makeCoefficients,makeb
 from Tridiagonal_Solver import tridiagonalSolve
+from rhs import maked
 
 n = par.n
 #Initialize Arrays
@@ -46,10 +47,9 @@ a=np.ndarray(n)
 b=np.ndarray(n)
 c=np.ndarray(n)
 d=np.ndarray(n)
-dHalf=np.ndarray(n)
 
 #Compute coefficient diagonals
-makeCoefficients(a,b,c)
+makeCoefficients(a,c)
 t_steps = int (par.T / par.dt)
 #TimeStep
 for k in range (t_steps):
@@ -57,18 +57,10 @@ for k in range (t_steps):
   N_k = TimeStep(N_k,1,v_kHalf)
   M_k = TimeStep(M_k,2,v_kHalf)
   H_k = TimeStep(H_k,3,v_kHalf)
-
-  # d= makeD(v_k, v_khalf,M_khalf,N_khalf,H_khalf)
-  d = np.random.random(d.shape)
+  b= makeb(M_k,N_k,H_k)
+  d= maked(v_k,M_k,N_k,H_k)
+#   d = np.random.random(d.shape)
   
   v_k = tridiagonalSolve(a,b,c,d)
- 
-  N_kHalf = TimeStep(N_kHalf,1,v_k)
-  M_kHalf = TimeStep(M_kHalf,2,v_k)
-  H_kHalf = TimeStep(H_kHalf,3,v_k)
-  
-  # dHalf=makeD(v_khalf,v_k,M_k,N_k,H_k)
-  dHalf= np.random.random(dHalf.shape)
-  v_kHalf = tridiagonalSolve(a,b,c,dHalf)
   
 print v_k
