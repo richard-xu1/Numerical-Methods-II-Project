@@ -38,7 +38,7 @@ v_rest = -70            # mV
 
 T=1     
 dt=dxa*dxa
-tsteps=int T/dt
+tsteps=int (T/dt)
 
 
 #Parameters for Injected Current
