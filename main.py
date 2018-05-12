@@ -7,7 +7,7 @@ from gating_time_step import TimeStep,Initialize
 from Coefficients import makeCoefficients
 from Tridiagonal_Solver import tridiagonalSolve
 from rhs_diagonal import maked,makeb
-from gatingCoefficients import Aj,Ae,calc_gate_coeff
+from gating_coefficients import Aj,Ae,calc_gate_coeff
 
 n = par.n
 v_rest = par.v_rest
