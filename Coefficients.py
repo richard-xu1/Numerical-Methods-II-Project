@@ -1,8 +1,7 @@
 # b is a function of gating variables so it needs to be updated with each time step
 # makeCoefficients makes computes coefficients vectors a and c for different types of nodes
-# par.grid provides information about the node whether its of type 0,1,2,3
-# 0: internal HH point, 1: Internal myelin point, 2: junction with myelin on the right, 3: junction with myelin on the left
-
+# 0: active cable internal, 1: passive internal, 2: active to passive
+# 3: passive to active, 4: start point, 5: end point
 
 import numpy as np
 import scipy as sp
