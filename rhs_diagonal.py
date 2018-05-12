@@ -4,6 +4,7 @@
 import numpy as np
 import scipy as sp
 import parameters as par
+from parameters import injectedCurrent as i
 import gating_coefficients as gc
 
 Aj = gc.Aj
@@ -18,6 +19,7 @@ ra = par.ra
 rp = par.rp
 rhoa = par.rhoA
 rhop = par.rhoP
+
 #rhs of interior nodes depends on, v_j^k, v_j+1^k, v_j-1^k, g_j^k+(^(k1/2), E_j^k+(1/2)
 #g_j^k+(1/2) Can be computed from the gating variables , p8, eq 20
 #E_j^k+(1/2) can be computed from the gating variables , p8 ,eq 21
@@ -38,12 +40,12 @@ def maked(v,g,E,t):
         if grid[i] == 0:    #Active internal
             vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa)
             vjothers= r/(4*rhoa*dxa*dxa)
-            d[i] = (vjkterm+g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
+            d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 1:  #Passive internal
             vjkterm = (CM/dt)-(rp/(2*rhop*dxp*dxp)
             vjothers= r/(4*rhop*dxp*dxp)
-            d[i] = (vjkterm+g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
+            d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 2:   #Active to Passive
             vjkterm=(Aj*CM/dt)-(np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
@@ -64,7 +66,7 @@ def maked(v,g,E,t):
         else:
             vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
-            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i-1] + Ae*g[i]*E[i] +i(t)
+            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i-1] + Ae*g[i]*E[i] 
     return d
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
