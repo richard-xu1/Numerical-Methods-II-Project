@@ -14,7 +14,7 @@ import parameters as par
 # timestep for the gating variables
 dt = par.dt
 N = par.n
-invdt = np.zeros(n) + (1/dt) #create a nx by 1 list full of 1/dt for element wise addition/subtraction in calculation c1 and c2
+invdt = np.zeros(n) + (1./dt) #create a nx by 1 list full of 1/dt for element wise addition/subtraction in calculation c1 and c2
 
 def Initialize(v,gtype):
     def alpha(v):
