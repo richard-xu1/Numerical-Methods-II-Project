@@ -1,20 +1,12 @@
 import numpy as np
 import scipy as sp
-# the equations for the potassium activation gating variable "h"
-
-# coefficients used in alpha/beta functions
-Aa = .02     #1/msec
-Ba = 35.    #mV
-Ca = 10.      #mvV
-Ab = .05     #1/msec
-Bb = 10.      #mV
-Cb = 10.     #mV   
+# the equations for the potassium activation gating variable "n"
 
 def alpha(v):
-    an = Aa*(v-Ba)/(1 - np.exp((Ba-v)/Ca))
+    an = (0.1)*((v+60.)/10.)/(1 - np.exp(-(v+60.)/10.))
     return an
     
 def beta(v):
-    bn = Ab*(Bb - v)/( 1 - np.exp((v-Bb)/Cb))
+    bn = (0.125)*np.exp(-(v+70.)/80.)
     return bn
     
