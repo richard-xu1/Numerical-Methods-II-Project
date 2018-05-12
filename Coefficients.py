@@ -6,9 +6,9 @@ import scipy as sp
 import parameters as par
 
 def makeCoefficients(a,c):
-	ra = par.ra
+    ra = par.ra
     rp = par.rp
-	rhoa = par.rhoA
+    rhoa = par.rhoA
 	rohp = par.rhoA
 	cn = par.CN
 	cm = par.CM
