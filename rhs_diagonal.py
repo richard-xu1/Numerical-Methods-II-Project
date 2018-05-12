@@ -4,7 +4,7 @@
 import numpy as np
 import scipy as sp
 import parameters as par
-from parameters import injectedCurrent as i
+from parameters import injectedCurrent as current
 import gating_coefficients as gc
 
 Aj = gc.Aj
@@ -63,7 +63,7 @@ def maked(v,g,E,t):
         elif grid[i] == 4:  
             vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
-            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i+1] + Ae*g[i]*E[i] +i(t)
+            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i+1] + Ae*g[i]*E[i] +current(t)
         else:
             vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
