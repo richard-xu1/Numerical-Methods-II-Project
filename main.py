@@ -24,9 +24,9 @@ for i in range(0,n):
     v_k[i] = v_rest
     
 #Initialize Gating variable vectors. Gating variables need to be initialized to rest potentials. page 11, eq 29,30
-N_kh = Initialize(v,1)
-M_kh = Initialize(v,2)
-H_kh = Initialize(v,3)
+N_kh = Initialize(v_k,1)
+M_kh = Initialize(v_k,2)
+H_kh = Initialize(v_k,3)
 
 #Initialize coefficient diagonals arrays
 
