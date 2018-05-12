@@ -40,7 +40,8 @@ t_steps = par.tsteps
 t = 0
 #TimeStep
 for k in range (t_steps):
-  #Update gating variables  
+  #Update gating variables
+  print "Time is" + str(t)
   N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
   M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
   H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
