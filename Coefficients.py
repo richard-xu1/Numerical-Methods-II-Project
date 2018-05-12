@@ -9,7 +9,7 @@ def makeCoefficients(a,c):
     ra = par.ra
     rp = par.rp
     rhoa = par.rhoA
-    rohp = par.rhoA
+    rohp = par.rhoP
     cn = par.CN
     cm = par.CM
     dxa = par.dxa
