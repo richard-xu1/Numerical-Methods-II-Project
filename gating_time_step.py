@@ -1,3 +1,8 @@
+#Update gating variable's
+#Internal points in active and passive cable get updated according to equation for s^(k+1/2)
+#Boundary points get updated according to gTilde_(k+1/2)
+
+
 import numpy as np
 import scipy as sp
 import h_sodium_inactivation as h
