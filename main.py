@@ -33,7 +33,7 @@ H_kh = Initialize(v_k,3)
 
 
 #Compute coefficient diagonals
-a,c = makeCoefficients(a,c)
+a,c = makeCoefficients()
 t_steps = par.tsteps
 
 #TimeStep
