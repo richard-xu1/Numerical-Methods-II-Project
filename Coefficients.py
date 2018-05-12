@@ -5,7 +5,7 @@ import numpy as np
 import scipy as sp
 import parameters as par
 
-def makeCoefficients(a,c):
+def makeCoefficients():
     ra = par.ra
     rp = par.rp
     rhoa = par.rhoA
