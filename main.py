@@ -22,15 +22,12 @@ v_k = np.ndarray(n)        #array stires voltage at time k
 #Initial conditions
 #Initialize all vectors to zero
 for i in range(0,n):
-    v_k[i] = v_rest.
-    N_kh[i] = 0.
-    M_kh[i] = 0.
-    H_kh[i] = 0.
+    v_k[i] = v_rest
     
 #Initialize Gating variable vectors. Gating variables need to be initialized to rest potentials. page 11, eq 29,30
-Initialize(N_kh,1)
-Initialize(M_kh,2)
-Initialize(H_kh,3)
+N_kh = Initialize(v,1)
+M_kh = Initialize(v,2)
+H_kh = Initialize(v,3)
 
 #Initialize coefficient diagonals arrays
 a=np.ndarray(n)
