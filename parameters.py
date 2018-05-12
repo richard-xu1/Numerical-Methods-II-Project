@@ -64,6 +64,8 @@ grid = [0]*n
 if (caseNumber == 0):
     for i in range (0,n):
         grid[i] = 0
+    grid[0] = 4
+    grid[n-1] = 5
 else: 
     for j in range(0,numOfNor+1):
         # print "j is" + str(j)
