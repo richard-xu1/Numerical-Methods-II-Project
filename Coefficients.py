@@ -38,8 +38,6 @@ def makeCoefficients(a,c):
 
 	c[0] = -(np.pi*ra)/(2*rhoa*dxa)
 	a[n-1] = -(np.pi*ra)/(2*rhoa*dxa)
-	
-	
 
   
 
