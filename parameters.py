@@ -6,14 +6,14 @@ caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 #For Case #2
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
 mylSections = numOfNor + 1               #number of myelinated sections
-nodeLen = .0001                             # node of ranvier length in millimeter
-myelinLen = 0.1                               #length of myelinated section in millimeter
+nodeLen = .0001                             # node of ranvier length in cm
+myelinLen = 0.1                               #length of myelinated section in cm
 
 norPoints = 10									         #Node of Ranvier Grid Points
 MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
 mylPoints = 100							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
-cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
+cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in cm
 dxa = nodeLen/norPoints                #dxa grid size on active cable
 dxp = myelinLen/mylPoints              #dxp grid size on passive cable
 
