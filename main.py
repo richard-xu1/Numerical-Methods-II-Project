@@ -48,8 +48,8 @@ for k in range (t_steps):
   M_kh = TimeStep(M_kh,2,v_kHalf) #Timestep in m
   H_kh = TimeStep(H_kh,3,v_kHalf) #Timestep in h
   g,E = richardsfunc(N_kh,M_kh,H_kh)
-  b= makeb(b,N_k,M_k,,H_k,g,E,gtilde,Etikde,Atilde)  #Update b
-  d= maked(d,v_k,N_k,M_k,H_k,g,E,gtilde,Etikde,Atilde)#Update d
+  b= makeb(g)  #Update b
+  d= maked(v,g,E)#Update d
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   
