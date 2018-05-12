@@ -38,23 +38,23 @@ def maked(v,g,E,t):
     d = [0]*n
     for i in range(n):
         if grid[i] == 0:    #Active internal
-            vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa)
+            vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa))
             vjothers= r/(4*rhoa*dxa*dxa)
             d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 1:  #Passive internal
-            vjkterm = (CM/dt)-(rp/(2*rhop*dxp*dxp)
+            vjkterm = (CM/dt)-(rp/(2*rhop*dxp*dxp))
             vjothers= r/(4*rhop*dxp*dxp)
             d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 2:   #Active to Passive
-            vjkterm=(Aj*CM/dt)-(np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vjkterm=(Aj*CM/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
             vp = (np.pi*rp*rp)/(2*dxp*rhop)
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
             d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i-1] + vp*v[i+1] +Aj*g[i]*E[i]
 
         elif grid[i] == 3:  #Passive to Active
-            vjkterm=(Aj*CM/dt)-(np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vjkterm=(Aj*CM/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
             vp = (np.pi*rp*rp)/(2*dxp*rhop)
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
             d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i+1] + vp*v[i-1] +Aj*g[i]*E[i]
