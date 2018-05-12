@@ -1,4 +1,3 @@
-# b is a function of gating variables so it needs to be updated with each time step
 # makeCoefficients makes computes coefficients vectors a and c for different types of nodes
 # 0: active cable internal, 1: passive internal, 2: active to passive
 # 3: passive to active, 4: start point, 5: end point
@@ -35,8 +34,6 @@ def makeCoefficients(a,c):
 	a[n-1] = 0 
 	
 	
-# makeb updates the coefficients of the main diagonal since it's a function of the gating variables
-def makeb(b,n,m,h)
 
   
 
