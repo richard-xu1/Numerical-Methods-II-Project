@@ -32,7 +32,40 @@ rhop = par.rhoP
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
-def maked(m,n,h):
+def maked(v,g,E,t):
+    d = [0]*n
+    for i in range(n):
+        if grid[i] == 0:    #Active internal
+            vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa)
+            vjothers= r/(4*rhoa*dxa*dxa)
+            d[i] = (vjkterm+g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
+
+        elif grid[i] == 1:  #Passive internal
+            vjkterm = (CM/dt)-(rp/(2*rhop*dxp*dxp)
+            vjothers= r/(4*rhop*dxp*dxp)
+            d[i] = (vjkterm+g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
+
+        elif grid[i] == 2:   #Active to Passive
+            vjkterm=(Aj*CM/dt)-(np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vp = (np.pi*rp*rp)/(2*dxp*rhop)
+            va = (np.pi*ra*ra)/(2*dxa*rhoa)
+            d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i-1] + vp*v[i+1] +Aj*g[i]*E[i]
+
+        elif grid[i] == 3:  #Passive to Active
+            vjkterm=(Aj*CM/dt)-(np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vp = (np.pi*rp*rp)/(2*dxp*rhop)
+            va = (np.pi*ra*ra)/(2*dxa*rhoa)
+            d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i+1] + vp*v[i-1] +Aj*g[i]*E[i]
+
+        elif grid[i] == 4:  
+            vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
+            va = (np.pi*ra*ra)/(2*dxa*rhoa)
+            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i+1] + Ae*g[i]*E[i] +i(t)
+        else:
+            vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
+            va = (np.pi*ra*ra)/(2*dxa*rhoa)
+            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i-1] + Ae*g[i]*E[i] +i(t)
+    return d
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
 def makeb(g):
