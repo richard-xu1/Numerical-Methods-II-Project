@@ -9,14 +9,12 @@ n = par.n             #import number of spatial discretizations
 def tridiagonalSolve(a,b,c,d):
     print "b is" + str(b)
     T = np.zeros([n,n]) #create nxn tridiagonal matrix
-    print T
     for i in range(n):      #fill in the T matrix using 'a','b','c'
         T[i,i] = b[i]
         if i != 0:
             T[i,i-1] = a[i]
         if i != n-1:
             T[i,i+1] = c[i]
-    print T
-    print T.shape
+    print "calling tridiagonal solve"
     return np.linalg.solve(T,d)
 
