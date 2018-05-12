@@ -16,6 +16,8 @@ def makeCoefficients(a,c):
     dxp = par.dxp
     n = par.n
     grid=par.grid  
+    a=np.ndarray(n)
+    c=np.ndarray(n)
 
     #Interior Points
     for i in range(1,n-1):
@@ -38,4 +40,5 @@ def makeCoefficients(a,c):
 
     c[0] = -(np.pi*ra)/(2*rhoa*dxa)
     a[n-1] = -(np.pi*ra)/(2*rhoa*dxa)
-
+    
+    return a,c
