@@ -46,6 +46,6 @@ def makeb(g):
             b[i] = (Aj*CM/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
         elif grid[i] == 3:     # passive to active junction    
             b[i] = (Aj*CM/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
-        else  #start point or end point
+        else:  #start point or end point
             b[i] = (Ae*CN/dt + Ae*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa))
     return b
