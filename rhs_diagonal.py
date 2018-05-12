@@ -37,12 +37,12 @@ def makeb(A0, g):
     for i in range(n):
         if grid[i] == 0:    #active cable
             b[i] = (CN/dt + g[i]/2. + ra/(2*rhoa*dxa**2))
-        elif grid[i] == 1    #passive cable
+        elif grid[i] == 1:    #passive cable
             b[i] = (CM/dt + g[i]/2. + rp/(2*rhop*dxp**2))
-        elif grid[i] == 2      # active to passive junction
+        elif grid[i] == 2:      # active to passive junction
             b[i] = (A0*CM/dt + A0*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
-        elif grid[i] == 3     # passive to active junction    
+        elif grid[i] == 3:     # passive to active junction    
             b[i] = (A0*CM/dt + A0*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
-        elif grid[i] == 4  or grid[i] == 5   #start point or end point
+        elif grid[i] == 4  or grid[i] == 5:   #start point or end point
             b[i] = (A0*CN/dt + A0*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa))
     return b
