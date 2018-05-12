@@ -37,8 +37,19 @@ T=1
 r1= 1
 r2= 14               
 dt=dxa*dxa
+t1 = 0.01
+t2 = 0.02
+i0 = 0.5
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
+
+def initialCurrent(t):
+    if t < t1:
+       return 0
+    elif t > t1 and t < t2:
+       return i0
+    else: 
+        return 0
 
 #grid is a bit string that describes nature of point
 # 0: active cable internal, 1: passive internal, 2: active to passive
