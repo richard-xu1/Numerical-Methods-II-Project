@@ -1,4 +1,6 @@
 #rhs.py builds the right hand side of the voltage equation given that the gating variables have been updated
+# 0: active cable internal, 1: passive internal, 2: active to passive
+# 3: passive to active, 4: start point, 5: end point
 
 
 #rhs of interior nodes depends on, v_j^k, v_j+1^k, v_j-1^k, g_j^k+(^(k1/2), E_j^k+(1/2)
