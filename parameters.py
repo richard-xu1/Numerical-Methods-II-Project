@@ -29,7 +29,7 @@ gL = 0.3                     #L gating constant
 T=1     
 r1= 1
 r2= 14               
-dt=dx*dx
+dt=dxa*dxa
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
