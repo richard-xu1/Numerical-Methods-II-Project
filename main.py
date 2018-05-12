@@ -7,7 +7,7 @@ from gating_time_step import TimeStep,Initialize
 from Coefficients import makeCoefficients
 from Tridiagonal_Solver import tridiagonalSolve
 from rhs_diagonal import maked,makeb
-from gatingCoefficients import Aj,Ae
+from gatingCoefficients import Aj,Ae,calc_gate_coeff
 
 n = par.n
 v_rest = par.v_rest
@@ -42,7 +42,7 @@ for k in range (t_steps):
   N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
   M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
   H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
-  g,E = richardsfunc(N_kh,M_kh,H_kh)
+  g,E = calc_gate_coeff(N_kh,M_kh,H_kh)
   b= makeb(g)  #Update b
   d= maked(v,g,E)#Update d
 #   d = np.random.random(d.shape)
