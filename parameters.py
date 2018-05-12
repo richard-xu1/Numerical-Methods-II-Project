@@ -7,7 +7,7 @@ caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
 mylSections = numOfNor + 1               #number of myelinated sections
 nodeLen = .001                             # node of ranvier length in millimeter
-myelinLen = 1                               #length of myelinated section in millimeter
+myelinLen = 1.                               #length of myelinated section in millimeter
 
 norPoints = 10									         #Node of Ranvier Grid Points
 MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
