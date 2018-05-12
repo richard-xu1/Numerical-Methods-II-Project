@@ -17,6 +17,7 @@ cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of
 dxa = nodeLen/norPoints                #dxa grid size on active cable
 dxp = myelinLen/mylPoints              #dxp grid size on passive cable
 
+#Physical Parameters
 ra = 0.0005			  # active cable radius in millimeters
 rp = 0.0005             #passive cable radius in millimeters
 rhoA = 35.4			  # active axoplasmic resistivity Ohm*cm
@@ -33,10 +34,14 @@ ENA = 45                # mV
 EK = -82                # mV
 EL = -59                # mV
 v_rest = -70            # mV
+
+
 T=1     
-r1= 1
-r2= 14               
 dt=dxa*dxa
+tsteps=int T/dt
+
+
+#Parameters for Injected Current
 t1 = 0.01
 t2 = 0.02
 i0 = 0.5
