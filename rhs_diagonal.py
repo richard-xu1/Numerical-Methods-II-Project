@@ -19,6 +19,7 @@ ra = par.ra
 rp = par.rp
 rhoa = par.rhoA
 rhop = par.rhoP
+n = par.n
 
 #rhs of interior nodes depends on, v_j^k, v_j+1^k, v_j-1^k, g_j^k+(^(k1/2), E_j^k+(1/2)
 #g_j^k+(1/2) Can be computed from the gating variables , p8, eq 20
