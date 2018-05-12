@@ -18,12 +18,12 @@ dxa = nodeLen/norPoints                #dxa grid size on active cable
 dxp = myelinLen/mylPoints              #dxp grid size on passive cable
 
 #Physical Parameters
-ra = 0.0005			  # active cable radius in millimeters
-rp = 0.0005             #passive cable radius in millimeters
+ra = 0.001			  # active cable radius in cm
+rp = 0.001           #passive cable radius in cm
 rhoA = 35.4			  # active axoplasmic resistivity Ohm*cm
 rhoP = 35.4            # passive axoplasmic resistivity  Ohm*cm
-CN = 1.5			  # nodal membrane capacitance in micromicrofarads
-CM = 1.6			  # myelinated membrane capacitance in micromicrofarads
+CN = 1			  # nodal membrane capacitance in microfarads/cm^2
+CM = 1			  # myelinated membrane capacitance in microfards/cm^2
 gNA = 120                # active sodium gating constant   
 gK = 36                  # active potassium gating constant 
 gL = 0.3                     # active leakage gating constant
