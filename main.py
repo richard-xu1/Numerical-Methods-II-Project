@@ -29,14 +29,12 @@ M_kh = Initialize(v,2)
 H_kh = Initialize(v,3)
 
 #Initialize coefficient diagonals arrays
-a=np.ndarray(n)
-b=np.ndarray(n)
-c=np.ndarray(n)
-d=np.ndarray(n)
+
+
 
 #Compute coefficient diagonals
-makeCoefficients(a,c)
-t_steps = int (par.T / par.dt) #make this more precise
+a,c = makeCoefficients(a,c)
+t_steps = par.tsteps
 
 #TimeStep
 for k in range (t_steps):
