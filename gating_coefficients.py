@@ -27,16 +27,16 @@ Ae = np.pi*ra*dxa               #A_tilde on a boundary point
 g = [0]*n
 E = [0]*n
 
-def calc_gate_coeff(n,m,h):
+def calc_gate_coeff(N,m,h):
     for i in range(n):
         if grid[i] == 0:
             gNA = gNA_bar*m[i]**3*h[i]
-            gK  = gK_bar*n[i]**4
+            gK  = gK_bar*N[i]**4
             g[i] = gNA + gK + gL
             E[i] = (gNA*ENA + gK*EK + gL*EL)/g[i]
         elif grid[i] == 1:
             gNA = gNAp_bar*m[i]**3*h[i]
-            gK  = gKp_bar*n[i]**4
+            gK  = gKp_bar*N[i]**4
             g[i] = gNA + gK + gLp
             E[i] = (gNA*ENA + gK*EK + gLp*EL)/g[i]   
     for i in range(n):            
