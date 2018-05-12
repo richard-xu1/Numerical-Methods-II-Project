@@ -33,6 +33,7 @@ def Initialize(v,gtype):
         else:
             return h.beta(v)
     v = (np.divide(alpha(v),(alpha(v)+beta(v))))
+    return v
 
 def TimeStep(s,gtype,v): #n is type = 1, m is type = 2, h is type = 3
     #takes s_k and v_{k+1/2} and returns s_{k+1}  
