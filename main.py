@@ -46,8 +46,9 @@ for k in range (t_steps):
   N_k = TimeStep(N_k,1,v_kHalf) #Timestep in n
   M_k = TimeStep(M_k,2,v_kHalf) #Timestep in m
   H_k = TimeStep(H_k,3,v_kHalf) #Timestep in h
-  b= makeb(b,N_k,M_k,,H_k)  #Update b
-  d= maked(d,v_k,N_k,M_k,H_k)   #Update d
+  g,E,gtilde,Etilde,Atilde = richardsfunc(N_k,M_k,H_k)
+  b= makeb(b,N_k,M_k,,H_k,g,E,gtilde,Etikde,Atilde)  #Update b
+  d= maked(d,v_k,N_k,M_k,H_k,g,E,gtilde,Etikde,Atilde)#Update d
   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   
