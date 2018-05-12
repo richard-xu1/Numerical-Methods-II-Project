@@ -4,7 +4,10 @@
 import numpy as np
 import scipy as sp
 import parameters as par
+import gating_coefficients as gc
 
+Aj = gc.Aj
+Ae = gc.Ae
 grid = par.grid
 CN = par.CN
 CM = par.CM
@@ -32,7 +35,7 @@ rhop = par.rhoP
 def maked(m,n,h):
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
-def makeb(Aj,Ae, g):
+def makeb(g):
     b = [0]*n
     for i in range(n):
         if grid[i] == 0:    #active cable
