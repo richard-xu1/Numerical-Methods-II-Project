@@ -10,6 +10,7 @@ from rhs import maked,makeb
 from gatingCoefficients import Aj,Ae
 
 n = par.n
+v_rest = par.v_rest
 #Initialize Arrays
 N_kh = np.ndarray(n)       #array stores gating variable n at time k+1/2
 M_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
@@ -21,7 +22,7 @@ v_k = np.ndarray(n)        #array stires voltage at time k
 #Initial conditions
 #Initialize all vectors to zero
 for i in range(0,n):
-    v_k[i] = 0.
+    v_k[i] = v_rest.
     N_kh[i] = 0.
     M_kh[i] = 0.
     H_kh[i] = 0.
