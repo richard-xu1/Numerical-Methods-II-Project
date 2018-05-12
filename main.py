@@ -7,7 +7,7 @@ from gating_time_step import TimeStep,Initialize
 from Coefficients import makeCoefficients
 from Tridiagonal_Solver import tridiagonalSolve
 from rhs import maked,makeb
-from gatingCoefficients import A0
+from gatingCoefficients import Aj,Ae
 
 n = par.n
 #Initialize Arrays
