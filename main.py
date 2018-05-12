@@ -6,7 +6,7 @@ import parameters as par
 from gating_time_step import TimeStep,Initialize
 from Coefficients import makeCoefficients
 from Tridiagonal_Solver import tridiagonalSolve
-from rhs import maked,makeb
+from rhs_diagonal import maked,makeb
 from gatingCoefficients import Aj,Ae
 
 n = par.n
