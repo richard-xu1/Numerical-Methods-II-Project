@@ -24,8 +24,8 @@ Aj = np.pi*(ra*dxa + rp*dxp)    #A_tilde on a junction
 Ae = np.pi*ra*dxa               #A_tilde on a boundary point
 
 #define the returned variables
-g = [0]*n
-E = [0]*n
+g = np.zeros(n)
+E = np.zeros(n)
 
 def calc_gate_coeff(N,m,h):
     for i in range(n):
