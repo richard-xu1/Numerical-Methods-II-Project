@@ -11,6 +11,7 @@ from gatingCoefficients import Aj,Ae,calc_gate_coeff
 
 n = par.n
 v_rest = par.v_rest
+dt = par.dt
 #Initialize Arrays
 # N_kh = np.ndarray(n)       #array stores gating variable n at time k+1/2
 # M_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
