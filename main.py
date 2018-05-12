@@ -39,9 +39,9 @@ t_steps = par.tsteps
 #TimeStep
 for k in range (t_steps):
   #Update gating variables  
-  N_kh = TimeStep(N_kh,1,v_kHalf) #Timestep in n
-  M_kh = TimeStep(M_kh,2,v_kHalf) #Timestep in m
-  H_kh = TimeStep(H_kh,3,v_kHalf) #Timestep in h
+  N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
+  M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
+  H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
   g,E = richardsfunc(N_kh,M_kh,H_kh)
   b= makeb(g)  #Update b
   d= maked(v,g,E)#Update d
