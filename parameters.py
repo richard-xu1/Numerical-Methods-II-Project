@@ -43,7 +43,7 @@ i0 = 0.5
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
-def initialCurrent(t):
+def injectedCurrent(t):
     if t < t1:
        return 0
     elif t > t1 and t < t2:
