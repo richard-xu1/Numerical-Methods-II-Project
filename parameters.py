@@ -14,7 +14,7 @@ MylNorRatio = myelinLen/nodeLen                              # Myelin length to 
 mylPoints = 100							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in millimeter
-dxa = nodeLen/norLength                #dxa grid size on active cable
+dxa = nodeLen/norPoints                #dxa grid size on active cable
 dxp = myelinLen/mylPoints              #dxp grid size on passive cable
 
 ra = 0.0005			  # active cable radius in millimeters
