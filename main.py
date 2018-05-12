@@ -44,7 +44,7 @@ for k in range (t_steps):
   H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
   g,E = calc_gate_coeff(N_kh,M_kh,H_kh)
   b= makeb(g)  #Update b
-  d= maked(v,g,E)#Update d
+  d= maked(v_k,g,E)#Update d
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   
