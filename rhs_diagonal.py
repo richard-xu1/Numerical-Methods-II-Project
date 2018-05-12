@@ -36,7 +36,7 @@ n = par.n
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
 def maked(v,g,E,t):
-    d = [0]*n
+    d = np.ndarray(n)
     for i in range(n):
         if grid[i] == 0:    #Active internal
             vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa))
@@ -72,7 +72,7 @@ def maked(v,g,E,t):
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
 def makeb(g):
-    b = [0]*n
+    b = np.ndarray(n)
     for i in range(n):
         if grid[i] == 0:    #active cable
             b[i] = (CN/dt + g[i]/2. + ra/(2*rhoa*dxa**2))
