@@ -12,10 +12,9 @@ from gatingCoefficients import Aj,Ae
 n = par.n
 v_rest = par.v_rest
 #Initialize Arrays
-N_kh = np.ndarray(n)       #array stores gating variable n at time k+1/2
-M_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
-H_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
-
+# N_kh = np.ndarray(n)       #array stores gating variable n at time k+1/2
+# M_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
+# H_kh = np.ndarray(n)       #array stores gating variable m at time k+1/2
 
 v_k = np.ndarray(n)        #array stires voltage at time k
 
