@@ -4,9 +4,9 @@ import numpy as np
 import scipy as sp
 import parameters as par
 from gating_time_step import TimeStep,Initialize
-from Coefficients import makeCoefficients,makeb
+from Coefficients import makeCoefficients
 from Tridiagonal_Solver import tridiagonalSolve
-from rhs import maked
+from rhs import maked,makeb
 
 n = par.n
 #Initialize Arrays
