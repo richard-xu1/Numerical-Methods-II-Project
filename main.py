@@ -1,3 +1,5 @@
+# 0: active cable internal, 1: passive internal, 2: active to passive
+# 3: passive to active, 4: start point, 5: end point
 import numpy as np
 import scipy as sp
 import parameters as par
