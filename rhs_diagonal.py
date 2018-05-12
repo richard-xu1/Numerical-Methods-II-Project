@@ -40,12 +40,12 @@ def maked(v,g,E,t):
     for i in range(n):
         if grid[i] == 0:    #Active internal
             vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa))
-            vjothers= r/(4*rhoa*dxa*dxa)
+            vjothers= ra/(4*rhoa*dxa*dxa)
             d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 1:  #Passive internal
             vjkterm = (CM/dt)-(rp/(2*rhop*dxp*dxp))
-            vjothers= r/(4*rhop*dxp*dxp)
+            vjothers= rp/(4*rhop*dxp*dxp)
             d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E*[i]
 
         elif grid[i] == 2:   #Active to Passive
