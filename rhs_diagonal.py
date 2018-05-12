@@ -17,4 +17,7 @@
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
-maked(m,n,h)
+def maked(m,n,h)
+
+# makeb updates the coefficients of the main diagonal since it's a function of the gating variables
+def makeb(b,n,m,h)
