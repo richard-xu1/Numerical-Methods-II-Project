@@ -32,6 +32,7 @@ gLp = 0.3                #passive leakage gating constant
 ENA = 45                # mV
 EK = -82                # mV
 EL = -59                # mV
+v_rest = -70            # mV
 T=1     
 r1= 1
 r2= 14               
