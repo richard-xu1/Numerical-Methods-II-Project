@@ -39,6 +39,7 @@ t_steps = par.tsteps
 
 t = 0
 #TimeStep
+print "v0 is " + str(v_k)
 for k in range (t_steps):
   #Update gating variables
   print "Time is" + str(t)
@@ -51,4 +52,5 @@ for k in range (t_steps):
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   t = t + dt
-print v_k
+  print "vk is " + str(v_k)
+
