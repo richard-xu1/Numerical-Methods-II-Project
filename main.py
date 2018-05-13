@@ -58,7 +58,8 @@ for k in range (2000000):
   # print "H is" + str(H_kh)
   g,E = calc_gate_coeff(N_kh,M_kh,H_kh)
   b= makeb(g)  #Update b
-  d= maked(v_k,g,E,t)#Update d
+  current= par.injectedCurrent(t+0.5*dt)
+  d= maked(v_k,g,E,current)#Update d
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   t = t + dt
