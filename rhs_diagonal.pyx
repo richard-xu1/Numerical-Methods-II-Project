@@ -13,6 +13,7 @@ cdef float Ae = gc.Ae
 cdef np.ndarray grid = par.grid
 cdef float CN = par.CN
 cdef float CM = par.CM
+cdef float CJ = par.CJ
 cdef float dxa = par.dxa
 cdef float dxp = par.dxp
 cdef float dt = par.dt
@@ -52,13 +53,13 @@ def maked(v,g,E,current):
             d[i] = (vjkterm-g[i]/2)*v[i]+vjothers*v[i+1]+vjothers*v[i-1]+g[i]*E[i]
 
         elif grid[i] == 2:   #Active to Passive
-            vjkterm=(Aj*CM/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vjkterm=(Aj*CJ/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
             vp = (np.pi*rp*rp)/(2*dxp*rhop)
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
             d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i-1] + vp*v[i+1] +Aj*g[i]*E[i]
 
         elif grid[i] == 3:  #Passive to Active
-            vjkterm=(Aj*CM/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
+            vjkterm=(Aj*CJ/dt)-np.pi*rp*rp/(2*rhop*dxp)-(np.pi*ra*ra/(2*rhoa*dxa))
             vp = (np.pi*rp*rp)/(2*dxp*rhop)
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
             d[i] = (vjkterm-(Aj*g[i]/2))*v[i] + va*v[i+1] + vp*v[i-1] +Aj*g[i]*E[i]
@@ -83,9 +84,9 @@ def makeb(g):
         elif grid[i] == 1:    #passive cable
             b[i] = (CM/dt + g[i]/2. + rp/(2*rhop*dxp**2))
         elif grid[i] == 2:      # active to passive junction
-            b[i] = (Aj*CM/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
+            b[i] = (Aj*CJ/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
         elif grid[i] == 3:     # passive to active junction    
-            b[i] = (Aj*CM/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
+            b[i] = (Aj*CJ/dt + Aj*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa) + np.pi*rp**2/(2*rhop*dxp))
         else:  #start point or end point
             b[i] = (Ae*CN/dt + Ae*g[i]/2 + np.pi*ra**2/(2*rhoa*dxa))
     # print "g was" + str(g)
