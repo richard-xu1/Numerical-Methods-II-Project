@@ -19,6 +19,7 @@ rp = par.rp
 ENA = par.ENA
 EK = par.EK
 EL = par.EL
+ELP= par.ELP
 
 Aj = np.pi*(ra*dxa + rp*dxp)    #A_tilde on a junction
 Ae = np.pi*ra*dxa               #A_tilde on a boundary point
@@ -38,7 +39,7 @@ def calc_gate_coeff(N,m,h):
             gNA = gNAp_bar*m[i]**3*h[i]
             gK  = gKp_bar*N[i]**4
             g[i] = gNA + gK + gLp
-            E[i] = (gNA*ENA + gK*EK + gLp*EL)/g[i]   
+            E[i] = (gNA*ENA + gK*EK + gLp*ELP)/g[i]   
     for i in range(n):            
         if grid[i] == 2:
             g[i] = (np.pi*(rp*dxp*g[i+1] + ra*dxa*g[i-1]))/Aj

@@ -45,9 +45,9 @@ t_steps = par.tsteps
 t = 0
 #TimeStep
 print "v0 is " + str(v_k)
-for k in range (2000000):
+for k in range (100000):
   #Update gating variables
-  print "Time is" + str(t)
+  # print "Time is" + str(t)
   N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
 
   M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
@@ -63,5 +63,8 @@ for k in range (2000000):
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   t = t + dt
+  if k%1000==0 :
+    print "T is" +str(t)
+    print "v is" +str(v_k)
 print "vk is " + str(v_k)
 

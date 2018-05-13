@@ -30,11 +30,11 @@ def makeCoefficients():
             a[i]= -rp/(4*rhop*dxp*dxp)
             c[i]= -rp/(4*rhop*dxp*dxp)
         elif grid[i] ==2:   #active to passive
-            a[i]= -(np.pi*ra)/(2*rhoa*dxa)
-            c[i]= -(np.pi*rp)/(2*rhop*dxp)
+            a[i]= -(np.pi*ra*ra)/(2*rhoa*dxa)
+            c[i]= -(np.pi*rp*rp)/(2*rhop*dxp)
         elif grid[i] ==3:   #passive to active
-            a[i]= -(np.pi*rp)/(2*rhop*dxp)
-            c[i]= -(np.pi*ra)/(2*rhoa*dxa)
+            a[i]= -(np.pi*rp*rp)/(2*rhop*dxp)
+            c[i]= -(np.pi*ra*ra)/(2*rhoa*dxa)
         
     #Boundary Points
 
