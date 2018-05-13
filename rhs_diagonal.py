@@ -35,7 +35,7 @@ n = par.n
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
-def maked(v,g,E,t):
+def maked(v,g,E,current):
     d = np.zeros(n)
     for i in range(n):
         if grid[i] == 0:    #Active internal
@@ -63,7 +63,7 @@ def maked(v,g,E,t):
         elif grid[i] == 4:  
             vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
-            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i+1] + Ae*g[i]*E[i] +current(t)
+            d[i] = (vjkterm-(Ae*g[i]/2))*v[i] + va*v[i+1] + Ae*g[i]*E[i] +current
         else:
             vjkterm=(Ae*CN/dt)-(np.pi*ra*ra/(2*rhoa*dxa))
             va = (np.pi*ra*ra)/(2*dxa*rhoa)
