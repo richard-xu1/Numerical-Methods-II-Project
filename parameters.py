@@ -1,20 +1,20 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
 
-caseNumber = 0# {Case #1: Unmyelenated , Case #2: Myelenated}
+caseNumber = 1# {Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
-numOfNor = 0                           # Number of Nodes of Ranvier excluding starting and end Nodes
+numOfNor = 10                           # Number of Nodes of Ranvier excluding starting and end Nodes
 if caseNumber == 0:
 	numOfNor = 0
 mylSections = numOfNor + 1              # number of myelinated sections
 if caseNumber == 1:
-	nodeLen = 5.                         # node of ranvier length in cm
-	myelinLen = .5                          # length of myelinated section in cm
+	nodeLen = .002                         # node of ranvier length in cm
+	myelinLen = 1.                          # length of myelinated section in cm
 else:
 	nodeLen = 5.
 	myelinLen = .5
-norPoints = 200									             # Node of Ranvier Grid Points
+norPoints = 20									             # Node of Ranvier Grid Points
 MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
 mylPoints = 20							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
@@ -55,7 +55,7 @@ tsteps=int (T/dt)
 #Parameters for Injected Current
 t1 = 0.01
 t2 = 0.02
-i0 = 30.          
+i0 = 30.         
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
