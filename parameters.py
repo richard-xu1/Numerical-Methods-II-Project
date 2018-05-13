@@ -44,7 +44,7 @@ tsteps=int (T/dt)
 #Parameters for Injected Current
 t1 = 0.01
 t2 = 0.02
-i0 = 0          
+i0 = 0.5          
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
