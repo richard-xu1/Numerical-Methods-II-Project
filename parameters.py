@@ -1,7 +1,7 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
 import numpy as np
-caseNumber = 0 #{Case #1: Unmyelenated , Case #2: Myelenated}
+caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
 numOfNor = 2                            #Number of Nodes of Ranvier excluding starting and end Nodes
@@ -23,8 +23,8 @@ rp = 0.007           #passive cable radius in cm
 rhoA = 0.0354		  # active axoplasmic resistivity Ohm*cm
 rhoP = 0.0354            # passive axoplasmic resistivity  Ohm*cm
 CN = 1			  # nodal membrane capacitance in microfarads/cm^2
-gNA = 120                # active sodium gating constant   
-gK = 36                  # active potassium gating constant 
+gNA = 2400                # active sodium gating constant   
+gK = 200                  # active potassium gating constant 
 gL = 0.3                     # active leakage gating constant
 ratio=0.0001
 CM = 0.001*CN			  # myelinated membrane capacitance in microfards/cm^2
