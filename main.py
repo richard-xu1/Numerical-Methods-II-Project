@@ -29,6 +29,11 @@ N_kh = Initialize(v_k,1)
 M_kh = Initialize(v_k,2)
 H_kh = Initialize(v_k,3)
 
+# print "n is" + str(N_kh)
+# print "m is" + str(M_kh)
+# print "H is" + str(H_kh)
+
+
 #Initialize coefficient diagonals arrays
 
 
@@ -39,16 +44,23 @@ t_steps = par.tsteps
 
 t = 0
 #TimeStep
-for k in range (t_steps):
+print "v0 is " + str(v_k)
+for k in range (2000000):
   #Update gating variables
   print "Time is" + str(t)
   N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
+
   M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
+
   H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
+  # print "n is" + str(N_kh)
+  # print "m is" + str(M_kh)
+  # print "H is" + str(H_kh)
   g,E = calc_gate_coeff(N_kh,M_kh,H_kh)
   b= makeb(g)  #Update b
   d= maked(v_k,g,E,t)#Update d
 #   d = np.random.random(d.shape)
   v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
   t = t + dt
-print v_k
+print "vk is " + str(v_k)
+

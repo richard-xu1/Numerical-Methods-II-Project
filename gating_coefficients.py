@@ -49,7 +49,7 @@ def calc_gate_coeff(N,m,h):
         elif grid[i] == 4:
             g[i] = g[i+1]
             E[i] = E[i+1]
-        elif grid[i] = 5:
+        elif grid[i] == 5:
             g[i] = g[i-1]
             E[i] = E[i-1]
     return g,E

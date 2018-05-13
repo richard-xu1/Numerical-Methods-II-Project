@@ -38,7 +38,7 @@ def makeCoefficients():
         
     #Boundary Points
 
-    c[0] = -(np.pi*ra)/(2*rhoa*dxa)
-    a[n-1] = -(np.pi*ra)/(2*rhoa*dxa)
+    c[0] = -(np.pi*ra*ra)/(2*rhoa*dxa)
+    a[n-1] = -(np.pi*ra*ra)/(2*rhoa*dxa)
     
     return a,c
