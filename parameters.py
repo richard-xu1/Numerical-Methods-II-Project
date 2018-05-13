@@ -1,6 +1,6 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
-
+import numpy as np
 caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
@@ -11,7 +11,7 @@ myelinLen = 1.                               #length of myelinated section in cm
 
 norPoints = 10									         #Node of Ranvier Grid Points
 MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
-mylPoints = 100							# Myelin section Grid Points
+mylPoints = 1000							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in cm
 dxa = nodeLen/norPoints                #dxa grid size on active cable
@@ -60,7 +60,7 @@ def injectedCurrent(t):
 #grid is a bit string that describes nature of point
 # 0: active cable internal, 1: passive internal, 2: active to passive
 # 3: passive to active, 4: start point, 5: end point
-grid = [0]*n
+grid = np.zeros(n)
 # print grid
 if (caseNumber == 0):
     for i in range (0,n):
