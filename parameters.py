@@ -1,7 +1,7 @@
 #Computation of myelinated and unmyelenated axons
 #This code specifies the parameters of the Linear Cable
 
-caseNumber = 0 #{Case #1: Unmyelenated , Case #2: Myelenated}
+caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
 numOfNor = 0                            #Number of Nodes of Ranvier excluding starting and end Nodes
@@ -9,9 +9,9 @@ mylSections = numOfNor + 1               #number of myelinated sections
 nodeLen = .0001                             # node of ranvier length in cm
 myelinLen = 0.1                               #length of myelinated section in cm
 
-norPoints = 2									         #Node of Ranvier Grid Points
+norPoints = 5									         #Node of Ranvier Grid Points
 MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
-mylPoints = 20							# Myelin section Grid Points
+mylPoints = 50							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in cm
 dxa = nodeLen/norPoints                #dxa grid size on active cable
@@ -23,13 +23,13 @@ rp = 0.001           #passive cable radius in cm
 rhoA = 35.4			  # active axoplasmic resistivity Ohm*cm
 rhoP = 35.4            # passive axoplasmic resistivity  Ohm*cm
 CN = 1			  # nodal membrane capacitance in microfarads/cm^2
-CM = 1			  # myelinated membrane capacitance in microfards/cm^2
+CM = .1			  # myelinated membrane capacitance in microfards/cm^2
 gNA = 120                # active sodium gating constant   
 gK = 36                  # active potassium gating constant 
 gL = 0.3                     # active leakage gating constant
-gNAp = 120              #passive sodium gating constant
-gKp = 36                #passive potassium gating constant
-gLp = 0.3                #passive leakage gating constant
+gNAp = 12              #passive sodium gating constant
+gKp = 3.6                #passive potassium gating constant
+gLp = 0.03                #passive leakage gating constant
 ENA = 45                # mV
 EK = -82                # mV
 EL = -59                # mV
