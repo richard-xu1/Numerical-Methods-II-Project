@@ -8,18 +8,20 @@ numOfNor = 10                           # Number of Nodes of Ranvier excluding s
 if caseNumber == 0:
     numOfNor = 0
 mylSections = numOfNor + 1              # number of myelinated sections
+
 if caseNumber == 1:
+    norPoints = 10
     nodeLen = .002                         # node of ranvier length in cm
     myelinLen = 1.                          # length of myelinated section in cm
 else:
+    norPoints = 200
     nodeLen = 5.
     myelinLen = .5                            #length of myelinated section in cm
 
-norPoints = 20									         #Node of Ranvier Grid Points
-MylNorRatio = myelinLen/nodeLen                              # Myelin length to Node length ratio
-mylPoints = 20							# Myelin section Grid Points
+									         #Node of Ranvier Grid Points
+mylPoints = 100							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
-cableLength = nodeLen*(numOfNor + 2) + MylNorRatio*mylSections  #total Length of cable in cm
+cableLength = nodeLen*(numOfNor + 2) + myelinLen*mylSections  #total Length of cable in cm
 dxa = nodeLen/norPoints                #dxa grid size on active cable
 dxp = myelinLen/mylPoints              #dxp grid size on passive cable
 
@@ -36,19 +38,20 @@ else:
     gNA = 120
     gK = 36 
 gL = 0.3                     # active leakage gating constant
-ratio=0.0001
-CM = 0.001*CN			  # myelinated membrane capacitance in microfards/cm^2
+gratio=0.004
+cratio= 0.004
+CM = cratio*CN			  # myelinated membrane capacitance in microfards/cm^2
 CJ = (CM*2.*np.pi*rp*dxp)/2 + (CN*2.*np.pi*ra*dxa)/2
-gNAp = ratio*gNA              #passive sodium gating constant
-gKp = ratio*gK                #passive potassium gating constant
-gLp = gL                #passive leakage gating constant
+gNAp = 0              #passive sodium gating constant
+gKp = 0                #passive potassium gating constant
+gLp = gratio*gL                #passive leakage gating constant
 ENA = 45                # mV
 EK = -82                # mV
 EL = -59                # mV
 v_rest = -70            # mV
 ELP= -70
 
-T=10     
+T=5     
 Tf=T/100.
 dt=.002
 tsteps=int (T/dt)

@@ -6,7 +6,8 @@ import scipy as sp
 import parameters as par
 from gating_time_step import TimeStep,Initialize
 from Coefficients import makeCoefficients
-from Tridiagonal_Solver import tridiagonalSolve
+# from Tridiagonal_Solver import tridiagonalSolve
+from linear_tridiagonal_solve import tridiagonalSolve
 from rhs_diagonal import maked,makeb
 from gating_coefficients import Aj,Ae,calc_gate_coeff
 
@@ -85,7 +86,7 @@ def animate(i):
     z = vFrames[i,:]
     # print  "z is" + str(z)
     t = Tf*i
-    titleString = 't=%8.2f ,dt=%8.4f' % (t,dt)
+    titleString = 't=%8.2f ,dt=%8.4f,cablelength=%8.2f' % (t,dt,par.cableLength)
     line.set_data(x_axis,z)
     plt.title(titleString)
     plt.xlim(0., n)
