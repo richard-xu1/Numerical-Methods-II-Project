@@ -16,8 +16,7 @@ cimport numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
-def main(np.int h):
-    case = h
+def main():
     startTime= time.time()
     caseNumber = par.caseNumber
     cdef int n = par.n
@@ -111,7 +110,7 @@ def main(np.int h):
             vFrames[frame, :] = v_k
             frame = frame+1
             tf=0.
-            conv_std[frame] = v_k[p_index]
+ 
 
 
 
@@ -166,4 +165,3 @@ def main(np.int h):
     anim.save('MyelinatedHH.mp4',writer=writer,dpi=dpi)
 
     plt.show()
-    return conv_std
