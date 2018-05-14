@@ -7,6 +7,7 @@ n = par.n             #import number of spatial discretizations
 
 def tridiagonalSolve(a,b,c,d):
     cp = np.zeros(n)
+    dp = np.zeros(n)
     v = np.zeros(n)
     for i in range(n-1):
         if i == 0:
@@ -20,7 +21,7 @@ def tridiagonalSolve(a,b,c,d):
             dp[i] = (d[i] - a[i]*dp[i-1])/(b[i]-a[i]*cp[i-1])
     for i in range(n):
         if i == 0:
-            v[n-1-i] = dp[i]
+            v[n-1-i] = dp[n-1-i]
         else:
-            v[n-1-i] = dp[i] - cp[i]*v[n-i]
+            v[n-1-i] = dp[n-1-i] - cp[n-1-i]*v[n-i]
     return v
