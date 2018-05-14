@@ -5,7 +5,7 @@ import numpy as np
 import scipy as sp
 cimport numpy as np
 
-cdef np.ndarray grid = par.grid
+
 cdef int n = par.n
 cdef float gNA_bar = par.gNA
 cdef float gK_bar = par.gK
@@ -20,16 +20,21 @@ cdef float rp = par.rp
 cdef float ENA = par.ENA
 cdef float EK = par.EK
 cdef float EL = par.EL
+cdef float Aj = par.Aj
+cdef float Ae = par.Ae
 
-Aj = np.pi*(ra*dxa + rp*dxp)    #A_tilde on a junction
-Ae = np.pi*ra*dxa               #A_tilde on a boundary point
+cdef float gNA
+cdef float gK
 
+
+DTYPE = np.float
 #define the returned variables
-cdef np.ndarray g = np.zeros(n)
-cdef np.ndarray E = np.zeros(n)
 
-def calc_gate_coeff(N,m,h):
-    cdef Py_ssize_t i
+def calc_gate_coeff(np.ndarray[np.float64_t, ndim=1] N,np.ndarray[np.float64_t, ndim=1] m,np.ndarray[np.float64_t, ndim=1] h):
+    cdef np.ndarray[np.float64_t, ndim=1] g = np.zeros(n,dtype=DTYPE)
+    cdef np.ndarray[np.float64_t, ndim=1] E = np.zeros(n,dtype=DTYPE)
+    cdef np.ndarray[np.float64_t, ndim=1] grid = par.grid
+    cdef Py_ssize_t i,j,k
     for i in range(n):
         if grid[i] == 0:
             gNA = gNA_bar*m[i]**3*h[i]
@@ -41,19 +46,23 @@ def calc_gate_coeff(N,m,h):
             gK  = gKp_bar*N[i]**4
             g[i] = gNA + gK + gLp
             E[i] = (gNA*ENA + gK*EK + gLp*EL)/g[i]   
-    for i in range(n):            
+    for i in range(n):
+        j=i-1
+        k=i+1
         if grid[i] == 2:
-            g[i] = (np.pi*(rp*dxp*g[i+1] + ra*dxa*g[i-1]))/Aj
-            E[i] = (np.pi*(rp*dxp*g[i+1]*E[i+1] + ra*dxa*g[i-1]*E[i-1]))/(Aj*g[i])
+            
+            g[i] = (np.pi*(rp*dxp*g[k] + ra*dxa*g[j]))/Aj
+            E[i] = (np.pi*(rp*dxp*g[k]*E[k] + ra*dxa*g[j]*E[j]))/(Aj*g[i])
         elif grid[i] == 3:
-            g[i] = (np.pi*(rp*dxp*g[i-1] + ra*dxa*g[i+1]))/Aj
-            E[i] = (np.pi*(rp*dxp*g[i-1]*E[i-1] + ra*dxa*g[i+1]*E[i+1]))/(Aj*g[i])       
+            j=i-1
+            g[i] = (np.pi*(rp*dxp*g[j] + ra*dxa*g[k]))/Aj
+            E[i] = (np.pi*(rp*dxp*g[j]*E[j] + ra*dxa*g[k]*E[k]))/(Aj*g[i])       
         elif grid[i] == 4:
-            g[i] = g[i+1]
-            E[i] = E[i+1]
+            g[i] = g[k]
+            E[i] = E[k]
         elif grid[i] == 5:
-            g[i] = g[i-1]
-            E[i] = E[i-1]
+            g[i] = g[j]
+            E[i] = E[j]
     return g,E
          
             

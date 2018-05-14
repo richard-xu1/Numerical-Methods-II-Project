@@ -8,15 +8,13 @@ from parameters import injectedCurrent as current
 import gating_coefficients as gc
 cimport numpy as np
 
-cdef float Aj = gc.Aj
-cdef float Ae = gc.Ae
-cdef np.ndarray grid = par.grid
+cdef float Aj = par.Aj
+cdef float Ae = par.Ae
 cdef float CN = par.CN
 cdef float CM = par.CM
 cdef float CJ = par.CJ
 cdef float dxa = par.dxa
 cdef float dxp = par.dxp
-cdef float dt = par.dt
 cdef float ra = par.ra
 cdef float rp = par.rp
 cdef float rhoa = par.rhoA
@@ -37,10 +35,15 @@ cdef int n = par.n
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
-def maked(v,g,E,current):
-    cdef np.ndarray[double,ndim=1] d = np.zeros(n)
+def maked(np.ndarray[np.float64_t, ndim=1] v,np.ndarray[np.float64_t, ndim=1] g,np.ndarray[np.float64_t, ndim=1] E,np.float current,np.int case):
+    cdef float dt = par.dt
+    if case ==3:
+        dt= 4*dt
+    elif case ==2:
+        dt= 2*dt
+    cdef np.ndarray[np.float64_t,ndim=1] d = np.zeros(n)
     cdef Py_ssize_t i
-    
+    cdef np.ndarray[np.float64_t,ndim=1] grid = par.grid
     for i in range(n):
         if grid[i] == 0:    #Active internal
             vjkterm = (CN/dt)-(ra/(2*rhoa*dxa*dxa))
@@ -75,9 +78,16 @@ def maked(v,g,E,current):
     return d
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
-def makeb(g):
+def makeb(np.ndarray[np.float64_t, ndim=1] g,np.int case):
+    cdef float dt = par.dt
     cdef np.ndarray[double,ndim=1] b = np.zeros(n)
     cdef Py_ssize_t i
+    cdef np.ndarray[np.float64_t,ndim=1] grid = par.grid
+    if case ==3:
+        dt = 4.*dt
+    elif case ==2:
+        dt = 2.*dt
+
     for i in range(n):
         if grid[i] == 0:    #active cable
             b[i] = (CN/dt + g[i]/2. + ra/(2*rhoa*dxa**2))

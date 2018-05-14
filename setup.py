@@ -14,15 +14,14 @@ setup(
     include_dirs=[numpy.get_include()]
 )
 
-# setup(
-# 	name = "Gating Time Step",
-#     ext_modules = cythonize("gating_time_step.pyx"),
-#     include_dirs=[numpy.get_include()]
-# )
-
 setup(
 	name = "Gating Coefficients Step",
     ext_modules = cythonize("gating_coefficients.pyx"),
+    include_dirs=[numpy.get_include()]
+)
+setup(
+    name = "Gating Time Step",
+    ext_modules = cythonize("gating_time_step.pyx"),
     include_dirs=[numpy.get_include()]
 )
 
@@ -48,13 +47,16 @@ setup(
     ext_modules = cythonize("Tridiagonal_Solver.pyx"),
     include_dirs=[numpy.get_include()]
 )
-# setup(
-#     name = "Main",
-#     ext_modules = cythonize("main.pyx"),
-#     include_dirs=[numpy.get_include()]
-# )
-# setup(
-# 	name = "Parameters",
-#     ext_modules = cythonize("parameters.pyx"),
-#     include_dirs=[numpy.get_include()]
-# )
+
+
+setup(
+    name = "linear Tridiagonal Solve",
+    ext_modules = cythonize("linear_tridiagonal_solve.pyx"),
+    include_dirs=[numpy.get_include()]
+)
+
+setup(
+    name = "Main",
+    ext_modules = cythonize("main.pyx"),
+    include_dirs=[numpy.get_include()]
+)

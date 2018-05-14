@@ -4,13 +4,13 @@ import numpy as np
 caseNumber = 1 #{Case #1: Unmyelenated , Case #2: Myelenated}
 
 #For Case #2
-numOfNor = 10                           # Number of Nodes of Ranvier excluding starting and end Nodes
+numOfNor = 20                           # Number of Nodes of Ranvier excluding starting and end Nodes
 if caseNumber == 0:
     numOfNor = 0
 mylSections = numOfNor + 1              # number of myelinated sections
 
 if caseNumber == 1:
-    norPoints = 10
+    norPoints = 2
     nodeLen = .002                         # node of ranvier length in cm
     myelinLen = 1.                          # length of myelinated section in cm
 else:
@@ -19,7 +19,7 @@ else:
     myelinLen = .5                            #length of myelinated section in cm
 
 									         #Node of Ranvier Grid Points
-mylPoints = 100							# Myelin section Grid Points
+mylPoints = 200							# Myelin section Grid Points
 n = mylSections*mylPoints + (numOfNor + 2)*norPoints                       #Total points in Linear Cable 
 cableLength = nodeLen*(numOfNor + 2) + myelinLen*mylSections  #total Length of cable in cm
 dxa = nodeLen/norPoints                #dxa grid size on active cable
@@ -51,26 +51,29 @@ EL = -59                # mV
 v_rest = -70            # mV
 ELP= -70
 
-T = 6     
+T = 4     
 Tf=T/100.
-dt=.002
+dt=.0002
 tsteps=int (T/dt)
+
+Aj = np.pi*(ra*dxa + rp*dxp)    #A_tilde on a junction
+Ae = np.pi*ra*dxa               #A_tilde on a boundary point
 
 
 #Parameters for Injected Current
 t1 = 0.01
 t2 = 0.02
-i0 = 30          
+i0 = 30.          
 #Build Grid should create create arrays v[n],M[n], N[n], H[n] which store the value
 #of voltage and gating variables at time t_k.
 
 def injectedCurrent(t):
     if t < t1:
-       return 0
+       return 0.
     elif t > t1 and t < t2:
        return i0
     else: 
-        return 0
+        return 0.
 
 #grid is a bit string that describes nature of point
 # 0: active cable internal, 1: passive internal, 2: active to passive

@@ -17,9 +17,9 @@ def makeCoefficients():
     cdef float dxa = par.dxa
     cdef float dxp = par.dxp
     cdef int n = par.n
-    cdef np.ndarray[double,ndim=1] grid=par.grid  
-    cdef np.ndarray[double,ndim=1] a=np.ndarray(n)
-    cdef np.ndarray[double,ndim=1] c=np.ndarray(n)
+    cdef np.ndarray[np.float64_t,ndim=1] grid=par.grid  
+    cdef np.ndarray[np.float64_t,ndim=1] a=np.ndarray(n)
+    cdef np.ndarray[np.float64_t,ndim=1] c=np.ndarray(n)
     # assert a.dtype == DTYPE and c.dtype == DTYPE
     cdef Py_ssize_t i
     #Interior Points
