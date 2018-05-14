@@ -35,14 +35,10 @@ def Initialize(np.ndarray[np.float64_t, ndim=1] v,np.int gtype):
     v = (np.divide(alpha(v),(alpha(v)+beta(v))))
     return v
 
-def TimeStep(np.ndarray[np.float64_t, ndim=1] s,np.int gtype,np.ndarray[np.float64_t, ndim=1] v,np.int case): #n is type = 1, m is type = 2, h is type = 3
+def TimeStep(np.ndarray[np.float64_t, ndim=1] s,np.int gtype,np.ndarray[np.float64_t, ndim=1] v): #n is type = 1, m is type = 2, h is type = 3
     #takes s_k and v_{k+1/2} and returns s_{k+1}  
     #define alpha and beta functions for the gate type
     cdef float dt = par.dt
-    if case ==3:
-        dt=4*dt
-    elif case ==2:
-        dt=2*dt
     cdef np.ndarray[np.float64_t, ndim=1] invdt = np.zeros(N) + (1./dt) #create a nx by 1 list full of 1/dt for element wise addition/subtraction in calculation c1 and c2
     cdef np.ndarray[np.float64_t, ndim=1] A
     cdef np.ndarray[np.float64_t, ndim=1] B
