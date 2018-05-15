@@ -17,19 +17,36 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 
 def main():
-    startTime= time.time()
-    caseNumber = par.caseNumber
-    cdef int n = par.n
+
+    startTime= time.time()                      #start time for computation
+    caseNumber = par.caseNumber                 #0: unmylinated cable, 1: mylinated cable
+    
+    cdef int n = par.n                          #total number of points in grid
     cdef np.ndarray x_axis = np.linspace(1,n,num=n,endpoint=True)
-    cdef np.ndarray grid = par.grid
-
-    cdef float v_rest = par.v_rest
-    cdef float dt = par.dt
-    cdef float Tf = par.Tf
-    cdef float T = par.T
-    cdef int nf  = int(T/Tf)+1
-
+    cdef np.ndarray grid = par.grid             #grid for cable with information about points
+    cdef float v_rest = par.v_rest              #rest potential
+    cdef float dt = par.dt                      #Time step dt
+    cdef float Tf = par.Tf                      #Intervals for movie
+    cdef float T = par.T                        #Total Time
+    cdef int nf  = int(T/Tf)+1                  #number of frames for movie
     cdef np.ndarray v_k = np.ndarray(n)        #array stires voltage at time k
+    cdef np.ndarray vFrames = np.ndarray([ nf, n])  #array to store frames for movie
+    cdef int t_steps = par.tsteps
+    cdef float t    = 0.    #   time since the beginning of the simulation
+    cdef float tf   = 0.    #   time since the beginning of the frame
+    cdef np.ndarray ta = np.zeros(t_steps/10+1)  # array for storing the time
+    cdef np.ndarray vta = np.zeros(t_steps/10+1)    # array for storing time course of v
+    cdef Py_ssize_t a_index = 0
+    cdef Py_ssize_t j_index = 0
+    cdef Py_ssize_t p_index = 0
+    cdef np.ndarray vtp
+    cdef np.ndarray vtj
+    cdef np.ndarray conv_std = np.zeros(nf)
+    frame = 0
+    k = 0
+    j = 0 
+
+
     #Initial conditions
     #Initialize all vectors to zero
     cdef Py_ssize_t i
@@ -47,19 +64,8 @@ def main():
     cdef np.ndarray c
     a,c = makeCoefficients()
 
-    cdef np.ndarray vFrames = np.ndarray([ nf, n])
 
-    cdef int t_steps = par.tsteps
-    cdef float t    = 0.    #   time since the beginning of the simulation
-    cdef float tf   = 0.    #   time since the beginning of the frame
-    cdef np.ndarray ta = np.zeros(t_steps/10+1)  # array for storing the time
-    cdef np.ndarray vta = np.zeros(t_steps/10+1)	# array for storing time course of v
-    cdef Py_ssize_t a_index = 0
-    cdef Py_ssize_t j_index = 0
-    cdef Py_ssize_t p_index = 0
-    cdef np.ndarray vtp
-    cdef np.ndarray vtj
-    cdef np.ndarray conv_std = np.zeros(nf)
+    #Time Course Graphs
     for i in range(n/3,n):
         if grid[i] == 0:
             a_index = i;
@@ -74,12 +80,11 @@ def main():
                 p_index = i	
             if p_index != 0 and j_index != 0:
                 break;
-    #TimeStep
-    frame = 0
-    k = 0
-    j = 0 
+    #Initialize array for main diagonal(b) and rhs(d)
     cdef np.ndarray b
     cdef np.ndarray d
+
+    #Time Step
     while t < T:
         N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
 
@@ -87,12 +92,14 @@ def main():
 
         H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
 
-        g,E = calc_gate_coeff(N_kh,M_kh,H_kh)		
+        g,E = calc_gate_coeff(N_kh,M_kh,H_kh)	 #compute g, E	
 
         b= makeb(g)                  #Update b
         current= par.injectedCurrent(t+0.5*dt)      #compute current
         d= maked(v_k,g,E,current)           #Update d
         v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
+
+        # save frame for time course graph
         if k % 10 == 0:
             ta[j] = t  
             vta[j] = v_k[a_index]
@@ -103,6 +110,8 @@ def main():
         k = k + 1
         t = t + dt    
         tf= tf+ dt 
+
+        #save frame for movie
         print "t is" + str(t)
         # print "v_k is"+str(v_k)
         if tf > Tf:
@@ -113,29 +122,35 @@ def main():
  
 
 
-
-    # print "v is " + str(v_k)
+    #Total Computation Time
     duration = time.time() - startTime
     midTime= time.time()
     print "Computations before Movie took" + str(duration)
+    
     # Time Course Graphs of active, passive and junction nodes
-    # print "va is " + str(vta)
     plt.figure()
     plt.plot(ta,vta,Lw = 1)
-    plt.title('v_active (mV) vs time (ms)')
+    plt.title('v (mV) vs time (ms) at Internal Node in Active Cable')
     plt.show()
 
     if caseNumber == 1:
         print "vp is " + str(vtp)
         plt.figure()
         plt.plot(ta,vtp,Lw = 1)
-        plt.title('v_passive (mV) vs time (ms)')
+        plt.title('v (mV) vs time (ms) at Internal Node in Passive Cable')
         plt.show()
         print "vj is " + str(vtj)
         plt.figure()
         plt.plot(ta,vtj,Lw = 1)
-        plt.title('v_junction (mV) vs time (ms)')
+        plt.title('v (mV) vs time (ms) at Active-Passive Junction')
         plt.show()
+    
+    #Movie
+    #Make x_axis for cable lenght
+    for i in range(n):
+        x_axis[i]=i*par.dxa
+    print x_axis
+
     fig = plt.figure()
     ax = plt.axes()
     line, = ax.plot([], [], lw=2)  
@@ -151,7 +166,7 @@ def main():
         titleString = 't=%8.2f ,dt=%8.4f,cablelength=%8.2f' % (t,dt,par.cableLength)
         line.set_data(x_axis,z)
         plt.title(titleString)
-        plt.xlim(0., n)
+        plt.xlim(0., x_axis[n-1])
         plt.ylim(-100,100)
         # plt.show()
         return line,  
@@ -162,6 +177,6 @@ def main():
 
     dpi = 200
     writer = animation.writers['ffmpeg'](fps=10)
-    anim.save('MyelinatedHH.mp4',writer=writer,dpi=dpi)
+    anim.save('UnmyelinatedHH.mp4',writer=writer,dpi=dpi)
 
     plt.show()
