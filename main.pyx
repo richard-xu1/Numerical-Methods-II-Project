@@ -81,17 +81,17 @@ def main():
     cdef np.ndarray b
     cdef np.ndarray d
     while t < T:
-        N_kh = TimeStep(N_kh,1,v_k,case) #Timestep in n
+        N_kh = TimeStep(N_kh,1,v_k) #Timestep in n
 
-        M_kh = TimeStep(M_kh,2,v_k,case) #Timestep in m
+        M_kh = TimeStep(M_kh,2,v_k) #Timestep in m
 
-        H_kh = TimeStep(H_kh,3,v_k,case) #Timestep in h
+        H_kh = TimeStep(H_kh,3,v_k) #Timestep in h
 
         g,E = calc_gate_coeff(N_kh,M_kh,H_kh)		
 
-        b= makeb(g,case)                  #Update b
+        b= makeb(g)                  #Update b
         current= par.injectedCurrent(t+0.5*dt)      #compute current
-        d= maked(v_k,g,E,current,case)           #Update d
+        d= maked(v_k,g,E,current)           #Update d
         v_k = tridiagonalSolve(a,b,c,d)  #Solve Tridiagonal system
         if k % 10 == 0:
             ta[j] = t  
