@@ -1,2 +1,2 @@
 # Numerical-Methods-II-Project
-Modified Hodgkin-Huxley system solver for mammalian nerve fibers and branched axons
+Modified Hodgkin-Huxley system solver for myelinated nerve fibers
