@@ -53,7 +53,7 @@ ELP= -70
 
 T = 4     
 Tf=T/100.
-dt=.0002
+dt=.0005
 tsteps=int (T/dt)
 
 Aj = np.pi*(ra*dxa + rp*dxp)    #A_tilde on a junction

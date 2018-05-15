@@ -35,8 +35,12 @@ cdef int n = par.n
 #j=n-1: Atilde_n-1, gtilde_n-1^k+(1/2),Etilde_n-1^k+(1/2) v_n-1^k, v_n-2^k
 
 #maked would need the updated gating variables, and other parameters to compute the RHS coefficient
-def maked(np.ndarray[np.float64_t, ndim=1] v,np.ndarray[np.float64_t, ndim=1] g,np.ndarray[np.float64_t, ndim=1] E,np.float current):
+def maked(np.ndarray[np.float64_t, ndim=1] v,np.ndarray[np.float64_t, ndim=1] g,np.ndarray[np.float64_t, ndim=1] E,np.float current,np.int case):
     cdef float dt = par.dt
+    if case ==3:
+        dt= 4*dt
+    elif case ==2:
+        dt= 2*dt
     cdef np.ndarray[np.float64_t,ndim=1] d = np.zeros(n)
     cdef Py_ssize_t i
     cdef np.ndarray[np.float64_t,ndim=1] grid = par.grid
@@ -74,11 +78,16 @@ def maked(np.ndarray[np.float64_t, ndim=1] v,np.ndarray[np.float64_t, ndim=1] g,
     return d
 
 # makeb updates the coefficients of the main diagonal since it's a function of the gating variables
-def makeb(np.ndarray[np.float64_t, ndim=1] g):
+def makeb(np.ndarray[np.float64_t, ndim=1] g,np.int case):
     cdef float dt = par.dt
     cdef np.ndarray[double,ndim=1] b = np.zeros(n)
     cdef Py_ssize_t i
     cdef np.ndarray[np.float64_t,ndim=1] grid = par.grid
+    if case ==3:
+        dt = 4.*dt
+    elif case ==2:
+        dt = 2.*dt
+
     for i in range(n):
         if grid[i] == 0:    #active cable
             b[i] = (CN/dt + g[i]/2. + ra/(2*rhoa*dxa**2))

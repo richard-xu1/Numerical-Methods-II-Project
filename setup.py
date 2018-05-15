@@ -57,6 +57,6 @@ setup(
 
 setup(
     name = "Main",
-    ext_modules = cythonize("main.pyx"),
+    ext_modules = cythonize("main_conv_std.pyx"),
     include_dirs=[numpy.get_include()]
 )
